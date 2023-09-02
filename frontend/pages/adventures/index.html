@@ -111,10 +111,6 @@
 
         // Declaring global variable adventure
         let adventures;
-
-        //Checks if filters are available in local storage and sets the value accordingly
-        // The structure of "filters" object is { duration : "6-10", category : [] }, which basically means duration is single-value filter and category is multi-value filter
-
         let filters =
             getFiltersFromLocalStorage() !== null
                 ? getFiltersFromLocalStorage()
@@ -143,9 +139,6 @@
 
         //executed when onChange() is triggered on duration filter dropdown
         function selectDuration(event) {
-            // TODO: MODULE_FILTERS
-            // 1. Change the DOM to show the selected duration filter. Use the provided input event
-            // 2. Invoke saveFiltersToLocalStorage here
             document.getElementById("data").innerText="";
             let duration = event.target.value;
             filters["duration"]= duration;
@@ -157,9 +150,6 @@
 
         //executed when clear button is clicked on duration filter dropdown
         function clearDuration(event) {
-            // TODO: MODULE_FILTERS
-            // 1. Change the DOM to clear the Duration filter. Refer clearCategory() below
-            // 2. Invoke saveFiltersToLocalStorage here
             document.getElementById("data").innerText="";
             document.getElementById('duration-select').selectedIndex=0
             filters["duration"]="";
@@ -185,9 +175,6 @@
             generateFilterPillsAndUpdateDOM(filters);
             let filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
-
-            // TODO: MODULE_FILTERS
-            // 1. Invoke saveFiltersToLocalStorage here
             saveFiltersToLocalStorage(filters)
         }
 
@@ -199,9 +186,6 @@
             filters["category"] = [];
             let filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
-
-            // TODO: MODULE_FILTERS
-            // 1. Invoke saveFiltersToLocalStorage here
             saveFiltersToLocalStorage(filters)
         }
 
